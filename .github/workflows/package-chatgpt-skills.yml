@@ -1,0 +1,43 @@
+name: Package ChatGPT skills
+
+on:
+  push:
+    branches:
+      - automation/package-chatgpt-skills
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build ChatGPT skill archives
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p dist/individual
+          count=0
+          for dir in skills/*; do
+            [ -d "$dir" ] || continue
+            [ -f "$dir/SKILL.md" ] || continue
+            name="$(basename "$dir")"
+            (
+              cd "$dir"
+              zip -qr "$GITHUB_WORKSPACE/dist/individual/${name}.zip" .
+            )
+            count=$((count + 1))
+          done
+          echo "Packaged $count skills"
+          test "$count" -gt 0
+          zip -qr dist/mabzadev-skills-plugin.zip .codex-plugin skills
+          (cd dist/individual && zip -qr ../mabzadev-chatgpt-skills.zip .)
+          printf '%s\n' "$count" > dist/SKILL_COUNT.txt
+      - name: Upload bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: mabzadev-chatgpt-skills
+          path: dist/
+          if-no-files-found: error
+          retention-days: 7
