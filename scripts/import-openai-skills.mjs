@@ -14,6 +14,12 @@ if (!API_KEY && !DRY_RUN) {
   process.exit(1);
 }
 
+async function readSkillName(dir, fallback) {
+  const text = await fs.readFile(path.join(dir, "SKILL.md"), "utf8");
+  const match = text.match(/^name:\s*["']?([^\n"']+)["']?\s*$/m);
+  return match?.[1]?.trim() || fallback;
+}
+
 async function listSkillDirs() {
   const entries = await fs.readdir(ROOT, { withFileTypes: true });
   const dirs = [];
@@ -22,7 +28,7 @@ async function listSkillDirs() {
     const dir = path.join(ROOT, entry.name);
     try {
       await fs.access(path.join(dir, "SKILL.md"));
-      dirs.push({ name: entry.name, dir });
+      dirs.push({ name: await readSkillName(dir, entry.name), dir });
     } catch {
       // Ignore non-skill folders.
     }
@@ -44,11 +50,8 @@ async function walkFiles(dir, base = dir) {
   return files;
 }
 
-function headers(extra = {}) {
-  const h = {
-    Authorization: `Bearer ${API_KEY}`,
-    ...extra,
-  };
+function headers() {
+  const h = { Authorization: `Bearer ${API_KEY}` };
   if (PROJECT) h["OpenAI-Project"] = PROJECT;
   return h;
 }
@@ -81,8 +84,6 @@ async function uploadSkill(skill) {
   }
 
   const form = new FormData();
-  form.append("name", skill.name);
-
   for (const file of files) {
     const bytes = await fs.readFile(file.full);
     form.append("files", new Blob([bytes]), file.rel);
@@ -99,7 +100,7 @@ async function uploadSkill(skill) {
   }
 
   const body = await res.json();
-  console.log(`Uploaded ${skill.name}${body?.id ? ` (${body.id})` : ""}`);
+  console.log(`Uploaded ${body?.name ?? skill.name}${body?.id ? ` (${body.id})` : ""}`);
 }
 
 const localSkills = await listSkillDirs();
