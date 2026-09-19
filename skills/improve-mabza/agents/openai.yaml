@@ -1,0 +1,5 @@
+interface:
+  display_name: "Améliorer Mabza"
+  short_description: "Intégrer récursivement le journal d'amélioration"
+policy:
+  allow_implicit_invocation: false

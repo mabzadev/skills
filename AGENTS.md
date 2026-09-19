@@ -27,4 +27,12 @@ Chaque `SKILL.md` est soit invoqué uniquement par l’utilisateur, soit invocab
 
 [`ask-mabza`](./skills/ask-mabza/SKILL.md) est le routeur des skills accessibles à l’utilisateur. Chaque ajout, renommage, suppression ou modification d’un skill invoqué par l’utilisateur doit être répercuté dans ce routeur.
 
+Le journal d’amélioration [`.agents/feedback/`](./.agents/feedback/README.md) recueille les retours d’usage des skills sous forme d’entrées structurées (frontmatter `type` / `cible` / `statut`, sections Observation, Contexte, Action proposée, Critère de vérification). Lorsqu’une discussion révèle une friction ou une idée non mise en œuvre, capturez-la avec le skill `note-mabza`, invocable par le modèle ; `/improve-mabza`, réservé à l’utilisateur, intègre récursivement les entrées ouvertes en suivant toutes les consignes de ce fichier, puis trace chaque décision dans le journal. Une entrée n’est jamais supprimée. La décision motivante est dans [`.agents/adr/0003-self-improvement-feedback-journal.md`](./.agents/adr/0003-self-improvement-feedback-journal.md).
+
+L'oracle du dépôt `scripts/validate-skills.mjs` (`npm run validate`) fait foi pour « le dépôt est correct » : invariants du journal, arborescence des skills, cohérence des index, pages de documentation et synchro des versions. Après toute modification, corrigez jusqu'à exit 0 (`--feedback` ou `--skill <nom>` pour une vérification ciblée) ; la CI rejoue l'oracle complet à chaque push.
+
+Les tests vivent sous [`tests/`](./tests/README.md) selon la convention superboard : `checks/` (vérifications, rangées par propriétaire), `lints/` (règles d'analyse partagées entre l'oracle et les tests), `fixtures/` (données partagées) et `e2e/` (parcours complets). Lancez-les avec `npm test` ; les fichiers de test s'appellent `*.test.mjs` et décrivent le comportement vérifié.
+
 Pour relier les skills aux répertoires locaux utilisés par Codex, exécutez `scripts/link-skills.sh`. Chaque entrée est un lien symbolique vers ce dépôt ; un `git pull` suffit donc à maintenir les skills installés à jour. Relancez le script après l’ajout, la suppression ou le renommage d’un skill.
+
+Les commandes d’exploitation suivent les conventions de [`scripts/README.md`](./scripts/README.md) : `build.sh` assemble `./dist` (jamais versionné) après un pré-vol `prepare-dist.sh` qui rejoue l’oracle, les tests et la synchro des versions ; `dev.sh` installe l’environnement local (liens, oracle, tests).

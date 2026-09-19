@@ -50,6 +50,15 @@ Cette section concerne l’entretien, pas les nouvelles fonctionnalités.
 
 - **`/improve-codebase-architecture`** — exécutez-le régulièrement pour maintenir une base de code claire pour les agents. Il fait émerger des **possibilités d’approfondissement** ; en choisir une produit une idée à réintroduire dans le flux principal avec `/grill-with-docs`. Ce skill trouve les candidats, tandis que **`/codebase-design`** fournit le vocabulaire pour concevoir la solution retenue.
 
+## Auto-amélioration
+
+Les skills s’améliorent par leur usage, en boucle courte :
+
+- **`note-mabza`** — invocable par le modèle : pendant une discussion, il évalue l’idée émergente — fonctionnalité à implémenter, concept à conserver, ajustement de skill ou piste écartée — et laisse une entrée structurée dans le journal `.agents/feedback/`, sans interrompre le fil. Vous n’avez pas à y penser ; une ligne en fin de réponse signale la capture.
+- **`/improve-mabza`** — intègre récursivement le journal : évaluation de chaque entrée ouverte, plan confirmé par l’humain, puis cascade complète — skills, routeur, catalogues, documentation, validateur — et trace de chaque décision dans le journal.
+
+La distinction : `/improve-codebase-architecture` approfondit **le code du projet** ; `/improve-mabza` améliore **les skills eux-mêmes** à partir de ce que leur usage révèle. Le journal est la mémoire de la boucle — les entrées intégrées expliquent pourquoi un skill a changé, les rejetées empêchent de re-proposer l’écarté. `/setup-mabza-skills` propose d’activer le journal à la configuration du dépôt.
+
 ## Vocabulaire en dessous
 
 Deux références invocables par le modèle se placent *sous* les autres skills et constituent chacune la source de vérité de leur vocabulaire. Appelez-les directement lorsque le problème porte sur les **mots** plutôt que sur le processus, ou laissez les skills précédents les sélectionner.

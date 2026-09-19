@@ -10,6 +10,10 @@
   "license": "MIT",
   "scripts": {
     "changeset": "changeset",
+    "test": "node --test",
+    "validate": "node scripts/validate-skills.mjs",
+    "build": "bash scripts/build.sh",
+    "dev": "bash scripts/dev.sh",
     "version": "changeset version && node scripts/sync-plugin-version.mjs",
     "check-plugin-version": "node scripts/sync-plugin-version.mjs --check"
   },

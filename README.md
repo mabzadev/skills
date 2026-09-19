@@ -142,7 +142,8 @@ Compétences que j'utilise quotidiennement pour le travail de code.
 - **[grill-with-docs](./skills/grill-with-docs/SKILL.md)** — Menez une séance de questions approfondie tout en construisant le modèle de domaine du projet, en précisant la terminologie et en mettant à jour `CONTEXT.md` ainsi que les ADR.
 - **[triage](./skills/triage/SKILL.md)** — Faites progresser les tickets entrants dans une machine à états fondée sur des rôles de tri.
 - **[improve-codebase-architecture](./skills/improve-codebase-architecture/SKILL.md)** — Analysez une base de code, présentez les possibilités d’amélioration dans un rapport HTML visuel, puis approfondissez celle que vous choisissez.
-- **[setup-mabza-skills](./skills/setup-mabza-skills/SKILL.md)** — Configurez une fois par dépôt l’outil de suivi, les étiquettes de tri et l’organisation de la documentation du domaine nécessaires aux autres skills d’ingénierie.
+- **[setup-mabza-skills](./skills/setup-mabza-skills/SKILL.md)** — Configurez une fois par dépôt l’outil de suivi, les étiquettes de tri, l’organisation de la documentation du domaine et le journal d’amélioration nécessaires aux autres skills d’ingénierie.
+- **[improve-mabza](./skills/improve-mabza/SKILL.md)** — Intégrez récursivement le journal d’amélioration (`.agents/feedback/`) dans les skills : évaluation de chaque entrée ouverte, plan confirmé, cascade complète puis trace des décisions.
 - **[to-spec](./skills/to-spec/SKILL.md)** — Transformez la conversation en cours en spécification et publiez-la dans l’outil de suivi, sans nouvel entretien : le skill synthétise ce qui a déjà été décidé.
 - **[to-tickets](./skills/to-tickets/SKILL.md)** — Divisez un plan, une spécification ou une conversation en tickets, chacun déclarant ses dépendances — sous forme de texte dans un fichier local ou de liens de blocage natifs dans un véritable outil de suivi.
 - **[implement](./skills/implement/SKILL.md)** — Réalisez le travail décrit par une spécification ou des tickets, pilotez `/tdd` selon les coutures convenues, puis terminez par `/code-review` avant le commit.
@@ -159,6 +160,7 @@ Compétences que j'utilise quotidiennement pour le travail de code.
 - **[code-review](./skills/code-review/SKILL.md)** — Examinez le diff selon deux axes indépendants : **Normes** — respecte-t-il les conventions du dépôt et les principaux signaux de mauvaise conception ? — et **Spécification** — implémente-t-il fidèlement le ticket ou la spécification d’origine ? Les deux analyses s’exécutent dans des sous-agents distincts.
 - **[resolving-merge-conflicts](./skills/resolving-merge-conflicts/SKILL.md)** — Résolvez une fusion ou un rebasage en conflit, élément par élément, en remontant à l’intention de chaque côté, puis terminez l’opération sans utiliser `--abort`.
 - **[wizard](./skills/wizard/SKILL.md)** — Générez un assistant bash interactif qui guide un humain à travers les étapes que lui seul peut effectuer : provisionnement de l'infrastructure, configuration des informations d'identification ou des secrets CI, navigation dans un tableau de bord tiers inconnu ou exécution d'une migration ou d'un basculement ponctuel.
+- **[note-mabza](./skills/note-mabza/SKILL.md)** — Capturez en cours de discussion un retour d'expérience dans le journal d'amélioration : fonctionnalité à implémenter, concept à conserver, ajustement de skill ou piste écartée.
 
 ### Productivité
 

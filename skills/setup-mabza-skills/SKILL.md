@@ -10,6 +10,7 @@ Créez la configuration propre au dépôt dont dépendent les skills d’ingéni
 - **Suivi des tickets** — emplacement des tickets (GitHub par défaut ; les fichiers Markdown locaux sont également pris en charge)
 - **Étiquettes de tri** — les chaînes utilisées pour les cinq rôles de tri canoniques
 - **Documents de domaine** — où résident `CONTEXT.md` et les ADR, et les règles du consommateur pour les lire
+- **Journal d’amélioration** — activer ou non la boucle d’auto-amélioration qui capture les retours d’usage pendant les discussions
 
 Il s'agit d'une compétence pilotée par une invite, et non d'un script déterministe. Explorez, présentez ce que vous avez trouvé, confirmez auprès de l'utilisateur, puis écrivez.
 
@@ -25,6 +26,7 @@ Regardez le dépôt actuel pour comprendre son état de départ. Lisez tout ce q
 - `docs/adr/` et tous les `src/*/docs/adr/` répertoires
 - `docs/agents/` — le résultat antérieur de cette compétence existe-t-il déjà ?
 - `.scratch/` — signe qu’une convention de suivi Markdown local existe déjà ;
+- `.agents/feedback/` — le journal d’amélioration existe-t-il déjà (la section D peut alors être ignorée) ;
 - la présence de `triage` — un dossier voisin ou une entrée dans la liste des skills disponibles — afin de déterminer si la section B doit être exécutée ;
 - les indices d’un monorepo : `pnpm-workspace.yaml`, champ `workspaces` dans `package.json` ou répertoires `packages/*` dotés de leur propre `src/`. En leur absence, choisissez un contexte unique, ce qui convient à la plupart des dépôts.
 
@@ -59,12 +61,21 @@ Les valeurs par défaut sont les cinq rôles canoniques, chaque chaîne d'étiqu
 
 Proposez du **multi-contexte** — une racine `CONTEXT-MAP.md` pointant vers des fichiers par contexte `CONTEXT.md`  — uniquement lorsque l'exploration a trouvé des signaux monorepo. Confirmez ensuite la mise en page souhaitée.
 
+**Section D — Journal d’amélioration.** Posez exactement une question :
+
+> Voulez-vous activer le journal d’amélioration ? (recommandé : **oui**)
+
+Le journal est la boucle d’auto-amélioration : pendant les discussions, `note-mabza` capture les idées qui ne sont pas mises en œuvre immédiatement — fonctionnalité à implémenter, concept à conserver, ajustement de skill, piste écartée — dans `.agents/feedback/` ; `/improve-mabza` intègre ensuite récursivement les entrées ouvertes, après confirmation du plan.
+
+Sur **oui**, créez `.agents/feedback/` en y copiant le modèle [improvement-journal.md](./improvement-journal.md) et ajoutez le sous-bloc `### Journal d’amélioration` au bloc `## Skills de l’agent`. Sur **non**, n’écrivez rien : `note-mabza` réactivera le journal à la première capture, donc un « non » ici signifie « pas maintenant », pas « jamais ».
+
 ### 3. Confirmer et modifier
 
 Montrez à l'utilisateur un brouillon de :
 
 - Le bloc `## Skills de l’agent` à ajouter ou à mettre à jour dans `AGENTS.md`.
 - Le contenu de `docs/agents/issue-tracker.md`, `docs/agents/domain.md` et `docs/agents/triage-labels.md`  (le dernier uniquement lorsque `triage` est installé)
+- Le contenu de `.agents/feedback/README.md` (uniquement lorsque la section D est acceptée)
 
 Laissez-les modifier avant d’écrire.
 
@@ -93,9 +104,13 @@ Le bloc :
 ### Documentation du domaine
 
 [résumé en une ligne de l’organisation — « contexte unique » ou « contextes multiples »]. Voir `docs/agents/domain.md`.
+
+### Journal d’amélioration
+
+[résumé en une ligne — « activé : les retours d’usage se capturent sous `.agents/feedback/` et s’intègrent par `/improve-mabza` »]. Voir `.agents/feedback/README.md`.
 ```
 
-Incluez le sous-bloc `### Étiquettes de triage` et écrivez `docs/agents/triage-labels.md` uniquement lorsque `triage` est installé et que la section B est exécutée. Dans le cas contraire, omettez les deux.
+Incluez le sous-bloc `### Étiquettes de triage` et écrivez `docs/agents/triage-labels.md` uniquement lorsque `triage` est installé et que la section B est exécutée. Incluez le sous-bloc `### Journal d’amélioration` et créez `.agents/feedback/` uniquement lorsque la section D est acceptée. Dans le cas contraire, omettez les blocs concernés.
 
 Ensuite, écrivez les fichiers docs en utilisant les modèles de départ dans ce dossier de compétences comme point de départ :
 
@@ -104,9 +119,10 @@ Ensuite, écrivez les fichiers docs en utilisant les modèles de départ dans ce
 - [issue-tracker-local.md](./issue-tracker-local.md) — suivi Markdown local
 - [triage-labels.md](./triage-labels.md) — mappage d'étiquettes (uniquement si `triage` est installé)
 - [domain.md](./domain.md) — règles de consommation du document de domaine + mise en page
+- [improvement-journal.md](./improvement-journal.md) — journal d’amélioration (uniquement si la section D est acceptée)
 
 Pour les "autres" outils de suivi des problèmes, écrivez `docs/agents/issue-tracker.md` à partir de zéro en utilisant la description de l'utilisateur.
 
 ### 5. Terminé
 
-Indiquez à l'utilisateur que la configuration est terminée et quelles compétences en ingénierie liront désormais ces fichiers. Mentionnez qu'ils peuvent modifier `docs/agents/*.md` directement plus tard — la réexécution de cette compétence n'est nécessaire que s'ils souhaitent changer de suivi des problèmes ou redémarrer à partir de zéro.
+Indiquez à l'utilisateur que la configuration est terminée et quelles compétences en ingénierie liront désormais ces fichiers. Lorsque le journal d’amélioration est activé, mentionnez la boucle : `note-mabza` capture les retours pendant les discussions, et `/improve-mabza` les intègre — à lancer à intervalle régulier. Mentionnez qu'ils peuvent modifier `docs/agents/*.md` directement plus tard — la réexécution de cette compétence n'est nécessaire que s'ils souhaitent changer de suivi des problèmes ou redémarrer à partir de zéro.
