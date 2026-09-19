@@ -1,10 +1,10 @@
 ## Ce qu’il fait
 
-`setup-mabza-skills` répond à trois questions sur un dépôt : où se trouvent les tickets, comment s’appellent les étiquettes de tri et où se trouvent les documents du domaine. Il enregistre les réponses dans des fichiers Markdown sous `docs/agents/`.
+`setup-mabza-skills` répond à quatre questions sur un dépôt : où se trouvent les tickets, comment s’appellent les étiquettes de tri, où se trouvent les documents du domaine et si la boucle d’auto-amélioration est activée. Il enregistre les réponses dans des fichiers Markdown sous `docs/agents/` et `.agents/feedback/`.
 
 Ces fichiers sont les seuls éléments qui varient d’un dépôt à l’autre. Les skills restent identiques partout : ils lisent `docs/agents/issue-tracker.md` au moment de l’exécution et suivent ses instructions. L’ensemble n’est donc pas lié à GitHub et aucun fichier de skill n’a besoin d’être modifié pour cibler un autre outil. L’invocation « lier les skills à un outil de suivi personnalisé » fonctionne avec tout service accessible par programmation.
 
-Il s’agit d’un skill piloté par une conversation, et non d’un script déterministe. Il lit votre `git remote`, votre fichier `AGENTS.md` et votre éventuel `CONTEXT.md`, présente ce qu’il a trouvé, puis attend votre confirmation avant toute écriture.
+Il s’agit d’un skill piloté par une conversation, et non d’un script déterministe. Il lit votre `git remote`, votre fichier `AGENTS.md` et votre éventuel `CONTEXT.md`, présente ce qu’il a trouvé, puis attend votre confirmation avant toute écriture. Sur un dépôt déjà configuré, il annonce une **mise à jour** et présente des diffs — l’existant face au proposé — au lieu de régénérer des brouillons complets.
 
 ## Quand l’utiliser
 
@@ -21,11 +21,12 @@ Il écrit dans le dépôt dans lequel vous l'exécutez :
 | `issue-tracker.md` | `docs/agents/` |
 | `domain.md` | `docs/agents/` |
 | `triage-labels.md` | `docs/agents/`, uniquement lorsque la compétence `triage`  est installée |
+| `README.md` du journal | `.agents/feedback/`, uniquement lorsque la boucle est acceptée |
 | Un bloc `## Skills de l’agent` | `AGENTS.md` à la racine du dépôt |
 
 Tous ces éléments sont des fichiers Markdown versionnés. Il n’existe pas de configuration globale ou propre à l’utilisateur : chaque dépôt conserve sa propre copie.
 
-## Les trois décisions
+## Les quatre décisions
 
 Il mène chaque section avec la réponse recommandée et ignore toute exploration déjà réglée. La plupart des analyses comportent deux confirmations et sont terminées.
 
@@ -34,6 +35,7 @@ Il mène chaque section avec la réponse recommandée et ignore toute exploratio
 | **Suivi des problèmes** | celui qui correspond à votre `git remote` | toujours — c'est le seul vrai choix |
 | **Étiquettes de tri** | conserver les cinq noms canoniques (`needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`) | uniquement si la compétence `triage`  est installée |
 | **Documents du domaine** | contexte unique : un `CONTEXT.md` plus `docs/adr/` à la racine | seulement s'il détecte les signaux monorepo, et alors il offre un multi-contexte `CONTEXT-MAP.md` |
+| **Journal d'amélioration** | activer la boucle : [note-mabza](https://aihero.dev/skills-note-mabza) capture les retours, [improve-mabza](https://aihero.dev/skills-improve-mabza) les intègre | uniquement si `.agents/feedback/` n'existe pas encore |
 
 Les options de l’outil de suivi :
 

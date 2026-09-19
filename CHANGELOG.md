@@ -16,10 +16,6 @@
 
 ## Non publié
 
-### Modifications mineures
-
-- Ajoutez la boucle d’auto-amélioration : le skill `note-mabza` (invocable par le modèle) évalue en cours de discussion si une idée émergente est une fonctionnalité à implémenter, un concept à conserver, un ajustement de skill ou une piste écartée, puis laisse une entrée structurée dans le journal `.agents/feedback/`. Le skill `/improve-mabza` intègre récursivement les entrées ouvertes — plan confirmé, cascade complète des index et de la documentation, trace des décisions. `setup-mabza-skills` propose désormais d’activer le journal (section D).
-
 ### Migration vers Codex
 
 - Remplacement de l’ancien conditionnement par un plugin Codex natif défini dans `.codex-plugin/plugin.json`.

@@ -77,6 +77,8 @@ Montrez à l'utilisateur un brouillon de :
 - Le contenu de `docs/agents/issue-tracker.md`, `docs/agents/domain.md` et `docs/agents/triage-labels.md`  (le dernier uniquement lorsque `triage` est installé)
 - Le contenu de `.agents/feedback/README.md` (uniquement lorsque la section D est acceptée)
 
+**Quand le fichier ou le bloc existe déjà**, annoncez explicitement une **mise à jour** et présentez un diff — l’existant face au proposé, limité à ce qui change — au lieu d’un brouillon complet régénéré. Tout contenu existant absent du diff est repris tel quel : ne réécrivez jamais un fichier existant depuis le modèle de départ. Ne présentez un brouillon complet que pour un fichier qui n’existe pas encore.
+
 Laissez-les modifier avant d’écrire.
 
 ### 4. Écrire
