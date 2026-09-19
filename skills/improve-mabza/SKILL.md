@@ -13,7 +13,7 @@ Il s'agit d'un skill piloté par la confirmation, et non d'un script déterminis
 
 ### 1. Collecter
 
-Lisez toutes les entrées de `.agents/feedback/` et regroupez-les par `cible` : les entrées visant le même skill se traitent ensemble. S'il n'y a aucune entrée `ouvert`, dites-le et arrêtez-vous — un journal vide est un succès, pas un échec.
+Lisez toutes les entrées de `.agents/feedback/` et regroupez-les par `cible` : les entrées visant le même skill se traitent ensemble. S'il n'y a aucune entrée `ouvert`, **ne concluez pas immédiatement** : demandez d'abord si la conversation en cours contient des retours à capturer — frictions, idées non mises en œuvre, pistes écartées — et capturez-les au format du journal (voir `note-mabza`) avant de reprendre le processus au début. Si la réponse est non, dites-le et arrêtez-vous : un journal vide est alors un succès, pas un échec.
 
 ### 2. Évaluer
 

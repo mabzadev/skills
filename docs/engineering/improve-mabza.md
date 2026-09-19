@@ -6,7 +6,7 @@ Sa contrainte définissante : rien ne s’écrit avant que le plan n’ait été
 
 ## Quand l’utiliser
 
-Vous l’invoquez en tapant `/improve-mabza` : l’agent ne le déclenchera pas seul. Lancez-le à intervalle régulier, quelques jours entre deux exécutions suffisent — la même cadence que [improve-codebase-architecture](https://aihero.dev/skills-improve-codebase-architecture) pour l’entretien d’une base de code. Un journal vide est un succès : le skill le dit et s’arrête.
+Vous l’invoquez en tapant `/improve-mabza` : l’agent ne le déclenchera pas seul. Lancez-le à intervalle régulier, quelques jours entre deux exécutions suffisent — la même cadence que [improve-codebase-architecture](https://aihero.dev/skills-improve-codebase-architecture) pour l’entretien d’une base de code. Un journal vide ne provoque pas un arrêt immédiat : le skill demande d’abord si la conversation en cours contient des retours à capturer, et s’arrête sur une réponse négative — un journal vide est alors un succès.
 
 La distinction avec son voisin : improve-codebase-architecture approfondit **le code du projet**, improve-mabza améliore **les skills eux-mêmes** à partir de ce que leur usage révèle. Pour capturer de nouvelles idées, c’est [note-mabza](https://aihero.dev/skills-note-mabza) qui s’en charge, en cours de discussion.
 

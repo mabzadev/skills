@@ -109,7 +109,7 @@ Le bloc :
 
 ### Journal d’amélioration
 
-[résumé en une ligne — « activé : les retours d’usage se capturent sous `.agents/feedback/` et s’intègrent par `/improve-mabza` »]. Voir `.agents/feedback/README.md`.
+Lorsqu’une discussion révèle une friction, une idée non mise en œuvre ou une piste écartée, capturez-la immédiatement sous `.agents/feedback/` au format décrit dans son README — ne corrigez rien en silence. `/improve-mabza` intègre les entrées ouvertes.
 ```
 
 Incluez le sous-bloc `### Étiquettes de triage` et écrivez `docs/agents/triage-labels.md` uniquement lorsque `triage` est installé et que la section B est exécutée. Incluez le sous-bloc `### Journal d’amélioration` et créez `.agents/feedback/` uniquement lorsque la section D est acceptée. Dans le cas contraire, omettez les blocs concernés.
