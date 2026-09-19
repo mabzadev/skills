@@ -1,5 +1,11 @@
 # Journal des modifications
 
+## 1.3.1
+
+### Patch Changes
+
+- [`f76be3a`](https://github.com/mabzadev/skills/commit/f76be3a8794bcbf48bce170f2b2a2483ef9aabe4) Thanks [@mabzadev](https://github.com/mabzadev)! - Rendez la capture indépendante du harnais : le sous-bloc `### Journal d’amélioration` écrit par `setup-mabza-skills` devient une instruction impérative aux agents (capturer immédiatement sous `.agents/feedback/`, ne jamais corriger en silence), valable aussi hors Codex où l’invocation implicite n’existe pas. `/improve-mabza`, face à un journal vide, demande désormais si la conversation en cours contient des retours à capturer avant de s’arrêter.
+
 ## 1.3.0
 
 ### Minor Changes
