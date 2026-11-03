@@ -26,9 +26,17 @@ jobs:
       - name: Installer les dépendances
         run: npm ci
 
+      # Les commits de versionnement sont signés au nom du mainteneur, jamais
+      # au nom de github-actions[bot].
+      - name: Configurer l’identité git
+        run: |
+          git config user.name "Mabza"
+          git config user.email "95926658+mabzadev@users.noreply.github.com"
+
       - name: Créer la pull request de versionnement
         uses: changesets/action@v1
         with:
+          setupGitUser: false
           version: npm run version
           publish: npx changeset tag
           commit: "chore: version skills"
