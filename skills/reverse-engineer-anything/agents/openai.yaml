@@ -1,0 +1,4 @@
+interface:
+  display_name: "Rétro-ingénierie (REA)"
+  short_description: "Comprenez un binaire, une app ou un paquet livré jusqu'au code natif"
+  default_prompt: "Utilisez $reverse-engineer-anything pour expliquer comment ce binaire ou cette application implémente une fonctionnalité."

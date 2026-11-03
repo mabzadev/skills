@@ -1,0 +1,3 @@
+interface:
+  display_name: "Diagnostic des bogues"
+  short_description: "Diagnostiquer les bogues difficiles et les régressions"

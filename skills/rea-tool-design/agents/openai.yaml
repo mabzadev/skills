@@ -1,0 +1,4 @@
+interface:
+  display_name: "Conception d'outils REA"
+  short_description: "Auditez ou concevez les outils, contrats CLI/MCP et Evidence de REA"
+  default_prompt: "Utilisez $rea-tool-design pour auditer ou concevoir un outil d'investigation REA et son contrat."

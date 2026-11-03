@@ -1,0 +1,4 @@
+interface:
+  display_name: "Optimisation d'analyse REA"
+  short_description: "Optimisez l'analyse REA en préservant l'Evidence, coûts mesurés"
+  default_prompt: "Utilisez $rea-analysis-optimization pour trouver et vérifier un goulot d'analyse concret en préservant la justesse et l'Evidence."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Notes de version REA"
+  short_description: "Préparez le changelog et les notes de version REA depuis l'historique Git"
+  default_prompt: "Utilisez $rea-changelog-update pour préparer les notes de version REA à partir de l'historique Git épinglé."
