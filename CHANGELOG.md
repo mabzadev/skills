@@ -1,5 +1,15 @@
 # Journal des modifications
 
+## 1.4.0
+
+### Minor Changes
+
+- [`5afbb5a`](https://github.com/mabzadev/skills/commit/5afbb5a31a8f348bd044160e2871b03fc6359a34) Thanks [@mabzadev](https://github.com/mabzadev)! - Importez les 5 skills de rétro-ingénierie de [morluto/rea](https://github.com/morluto/rea) (MIT) dans la catégorie engineering : `reverse-engineer-anything` et les skills de maintenance `rea-tool-design`, `rea-analysis-optimization`, `rea-ci-tests-audit` et `rea-changelog-update`. Chaque skill est autonome et embarque sous `references/rea/` les guides REA qu’il cite. Le plugin déclare désormais le serveur MCP REA (`.codex-plugin/mcp.json`), qui s’installe en même temps que les skills.
+
+### Patch Changes
+
+- [`5afbb5a`](https://github.com/mabzadev/skills/commit/5afbb5a31a8f348bd044160e2871b03fc6359a34) Thanks [@mabzadev](https://github.com/mabzadev)! - Rendez la capture indépendante du harnais : le sous-bloc `### Journal d’amélioration` écrit par `setup-mabza-skills` devient une instruction impérative aux agents (capturer immédiatement sous `.agents/feedback/`, ne jamais corriger en silence), valable aussi hors Codex où l’invocation implicite n’existe pas. `/improve-mabza`, face à un journal vide, demande désormais si la conversation en cours contient des retours à capturer avant de s’arrêter.
+
 ## 1.3.0
 
 ### Minor Changes
